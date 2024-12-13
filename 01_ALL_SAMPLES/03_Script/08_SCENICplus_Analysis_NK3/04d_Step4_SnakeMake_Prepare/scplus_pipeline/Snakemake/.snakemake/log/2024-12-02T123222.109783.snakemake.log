@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule motif_enrichment_dem in file /mnt/DOSI/PLATEFORMES/BIOINFORMATIQUE/03_WORKSPACE/rebuffet/Lung_Basel/01_ALL_SAMPLES/03_Script/08_SCENICplus_Analysis_NK3/04d_Step4_SnakeMake_Prepare/scplus_pipeline/Snakemake/workflow/Snakefile, line 93:
+Missing input files for rule motif_enrichment_dem:
+    output: /mnt/DOSI/EVLAB/BIOINFO/BIOINFO_PROJECT/Lung_Basel/01_ALL_SAMPLES/05_Output/08_SCENICplus_Analysis_NK3/04d_Step4_SnakeMake_Prepare/outs/dem_results.hdf5, /mnt/DOSI/EVLAB/BIOINFO/BIOINFO_PROJECT/Lung_Basel/01_ALL_SAMPLES/05_Output/08_SCENICplus_Analysis_NK3/04d_Step4_SnakeMake_Prepare/outs/dem_results.html
+    affected files:
+        /mnt/DOSI/EVLAB/BIOINFO/BIOINFO_PROJECT/Lung_Basel/01_ALL_SAMPLES/08_Output/04_SCENICplus_Analysis_NK3/04a_fullpy_Step1_py_pycisTopic_Prepro_ATACseq/region_sets
