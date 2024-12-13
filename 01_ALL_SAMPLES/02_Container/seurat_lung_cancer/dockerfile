@@ -1,0 +1,180 @@
+# Based on rocker - https://github.com/rocker-org/rocker-versioned
+FROM rocker/rstudio:4.0.3
+
+MAINTAINER REBUFFET Lucas (rebuffet@ciml.univ-mrs.fr)
+
+
+
+# ##############################
+# R packages system dependencies
+# ##############################
+
+RUN apt-get update && apt-get install -y optipng \
+                                         pandoc \
+                                         libpng-dev \
+                                         zlib1g-dev \
+                                         libssl-dev \
+                                         libcurl4-openssl-dev \
+                                         libglpk-dev
+
+
+
+# ####################################
+# INSTALLING R PACKAGES FOR PROJECT
+# ####################################
+
+RUN apt-get update && apt-get install -y libxml2-dev libhdf5-serial-dev libudunits2-dev 
+RUN  apt-get update \ 
+  && export DEBIAN_FRONTEND=noninteractive \
+## && apt-get -y install xorg openbox
+  && apt-get -y install libx11-dev freeglut3 freeglut3-dev libpng-dev 
+
+
+
+RUN R -e 'install.packages( "knitr")'
+RUN R -e 'install.packages( "ade4")'
+RUN R -e 'install.packages( "ggplot2")'
+RUN R -e 'install.packages( "magrittr")'
+RUN R -e 'install.packages( "dplyr")'
+RUN R -e 'install.packages( "Rtsne")'
+RUN R -e 'install.packages( "ggrepel")'
+RUN R -e 'install.packages( "Rcpp")'
+
+
+RUN R -e 'install.packages( "rprojroot")'
+RUN R -e 'install.packages( "rmarkdown")'
+RUN R -e 'install.packages( "htmltools")'
+RUN R -e 'install.packages( "reshape")'
+RUN R -e 'install.packages( "gridExtra")'
+RUN R -e 'install.packages( "openxlsx")'
+RUN R -e 'install.packages( "corrplot")'
+RUN R -e 'install.packages( "reticulate")'
+RUN R -e 'install.packages( "feather")'
+RUN R -e 'install.packages( "devtools")'
+RUN R -e 'install.packages( "ggthemes")'
+
+RUN R -e 'install.packages( "sctransform")'
+RUN R -e 'install.packages( "BiocManager")'
+RUN R -e 'BiocManager::install()'
+RUN R -e 'library(BiocManager)'
+RUN R -e 'install.packages("BiocInstaller")'
+RUN R -e 'BiocManager::install("BiocInstaller")'
+RUN R -e 'install.packages( "Seurat")'
+RUN R -e 'BiocManager::install("GOstats")'
+RUN R -e 'BiocManager::install("GO.db")'
+RUN R -e 'BiocManager::install("org.Mm.eg.db")'
+RUN R -e 'BiocManager::install("org.Hs.eg.db")'
+RUN R -e 'BiocManager::install("clusterProfiler")'
+RUN R -e 'BiocManager::install("KEGG.db")'
+RUN R -e 'BiocManager::install("KEGGREST")'
+
+#RUN R -e 'BiocManager::install("monocle", version = "3.8")'
+RUN R -e 'install.packages("DDRTree")'
+RUN R -e 'install.packages("pheatmap")'
+RUN R -e 'devtools::install_github("chris-mcginnis-ucsf/DoubletFinder")'
+RUN R -e 'install.packages("DT")'
+RUN R -e 'install.packages("funr")'
+RUN R -e 'install.packages("limma")'
+RUN R -e 'devtools::install_github("tidyverse/ggplot2@v3.3.6")'
+RUN R -e 'devtools::install_github("erocoar/gghalves")'
+RUN R -e 'install.packages("ggdist")'
+RUN R -e 'install.packages("R.utils")'
+#RUN R -e 'remotes::install_github("satijalab/seurat-wrappers")'
+RUN R -e 'remotes::install_github("satijalab/seurat-wrappers@community-vignette")'
+
+RUN R -e 'BiocManager::install("SingleCellExperiment")'
+RUN R -e 'remotes::install_github("immunogenomics/harmony")'
+
+## dependencies
+RUN apt-get update && apt-get install -y  apt-utils
+RUN apt-get update \ 
+  && apt-get install -y  python3.5 python3-pip build-essential pkg-config libffi-dev libmagickwand-dev python-cffi python3-dev 
+
+
+
+RUN pip3 install --upgrade pip
+RUN apt-get install -y libpcap-dev libpq-dev
+RUN apt-get install -y python3-numpy
+RUN apt-get install -y python3-tk
+RUN python3 -m pip install pandas
+RUN python3 -m pip  install matplotlib
+RUN python3 -m pip  install feather-format
+RUN python3 -m pip  install nbconvert
+RUN python3 -m pip  install patsy 
+RUN python3 -m pip  install scikit-learn
+RUN python3 -m pip  install umap-learn
+RUN python3 -m pip  install python-igraph
+
+# Optional libraries for scVelo
+RUN pip3 install python-igraph louvain
+RUN pip3 install pybind11 hnswlib
+
+RUN python3 -m pip  install git+https://github.com/Teichlab/NaiveDE.git
+RUN python3 -m pip  install scipy
+RUN python3 -m pip  install tqdm
+RUN rm -f /usr/bin/python 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+RUN R -e 'BiocManager::install("ComplexHeatmap")'
+RUN R -e 'devtools::install_github("caleblareau/BuenColors")'
+RUN R -e 'BiocManager::install("biomaRt")'
+
+
+RUN R -e 'BiocManager::install("batchelor")'
+
+RUN pip3 install scanorama
+RUN R -e 'BiocManager::install("celldex")'
+RUN R -e 'BiocManager::install("SingleR")'
+RUN R -e 'install.packages(c("Factoshiny","missMDA","FactoInvestigate"))'
+RUN R -e 'BiocManager::install("scMerge")'
+RUN R -e 'BiocManager::install("scran")'
+#RUN R -e 'devtools::install_github(repo = "samuel-marsh/scCustomize")'
+RUN R -e 'BiocManager::install("batchelor")'
+
+
+RUN R -e 'install.packages("plyr")'
+RUN R -e 'install.packages("readxl")'
+RUN R -e 'install.packages("data.table")'
+
+RUN R -e 'install.packages("MASS")'
+RUN R -e 'install.packages("Polychrome")'
+RUN R -e 'install.packages("patchwork")'
+RUN R -e 'remotes::install_github("aertslab/ScopeLoomR")'
+RUN R -e 'install.packages("AUCell")'
+RUN R -e 'devtools::install_github("aertslab/SCENIC")'
+RUN R -e 'install.packages(c("KernSmooth", "RColorBrewer" , "plotly" , "BiocParallel" , "grid" ))'
+
+RUN R -e 'devtools::install_github("mojaveazure/loomR")'
+
+RUN R -e 'install.packages(c("Matrix" ,"digest" ,"forcats","fs" , "future" , "ggpubrs" , "htmlwidgets" , "iheatmapr" , "patchwork" ,"pander" , "scales", "gson"))'
+
+RUN Rscript -e 'remotes::install_github("YuLab-SMU/yulab.utils")'
+RUN Rscript -e 'install.packages("tidytree")'
+
+RUN  apt-get install -y libglpk-dev
+
+RUN R -e 'remotes::install_github("mojaveazure/seurat-disk")'
+
+RUN Rscript -e 'BiocManager::install(c("ggtree", "clusterProfiler" , "scater", "glmGamPoi" , "DESeq2", "destiny"))'
+
+RUN R -e 'install.packages(c("rlist", "factoextra", "fca", "rmdformats" ))'
+
+RUN python3 -m pip  install anndata
+
+RUN R -e 'BiocManager::install("Rsamtools")'
+#RUN R -e 'setRepositories(ind=1:3); install.packages("Signac", repos="http://cran.us.r-project.org")'
+
+
+RUN apt-get install -y gsl-bin libgsl-dev
+RUN R -e 'BiocManager::install("DirichletMultinomial")'
+RUN R -e 'devtools::install_github("GreenleafLab/ArchR", ref="master", repos = BiocManager::repositories())'
+RUN Rscript -e 'ArchR::installExtraPackages()'
+
+RUN R -e 'BiocManager::install(c("ggbio", "biovizBase", "AnnotationFilter"))'
+
+RUN R -e 'install.packages(c("Signac", "arrow"))'
+
+RUN R -e 'remotes::install_github("aertslab/cisTopic")'
+
+
+CMD ["/init"]

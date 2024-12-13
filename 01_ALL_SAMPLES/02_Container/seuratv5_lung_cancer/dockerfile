@@ -1,0 +1,29 @@
+# Based on Adrien le z - https://hub.docker.com/r/adrienmazuel/seurat5spatialtranscriptomics
+FROM adrienmazuel/seurat5spatialtranscriptomics:latest
+
+MAINTAINER REBUFFET Lucas (rebuffet@ciml.univ-mrs.fr)
+
+
+RUN R -e 'BiocManager::install("dittoSeq")'
+
+#RUN R -e 'BiocManager::install("monocle", version = "3.8")'
+#RUN R -e 'install.packages("DDRTree")'
+#RUN R -e 'remotes::install_github("satijalab/seurat-wrappers")'
+
+## dependencies
+#RUN apt-get update && apt-get install -y  apt-utils
+#RUN apt-get update \ 
+#  && apt-get install -y  python3.5 python3-pip build-essential pkg-config libffi-dev libmagickwand-dev python-cffi python3-dev 
+
+RUN R -e 'devtools::install_github("GreenleafLab/ArchR", ref="master", repos = BiocManager::repositories())'
+RUN Rscript -e 'BiocManager::install(c("ggtree", "clusterProfiler" , "DESeq2", "destiny"))'
+
+RUN Rscript -e 'ArchR::installExtraPackages()'
+
+RUN R -e 'BiocManager::install(c("ggbio", "biovizBase", "AnnotationFilter"))'
+
+RUN R -e 'install.packages(c("Signac", "arrow"))'
+
+
+
+CMD ["/init"]
