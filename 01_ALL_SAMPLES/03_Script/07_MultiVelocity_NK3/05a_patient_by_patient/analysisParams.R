@@ -37,3 +37,25 @@ NCORES_LDA_MODELS = 10
 DO_EXTRACT_EMBED = FALSE
 
 DO_EXTRACT_NEIGBORS = FALSE
+
+# For Preprocessing step
+variable_to_sort = "Fine_Annotation_WNN"
+Clusters_To_Extract = c("NK_GZMK", "NK_CAMK4",   "NK_ENTPD1")
+
+# Dictionary mapping samples to orig.ident
+sample_to_orig <- list(
+  CSS1 = "BS-840",
+  CSS10 = "BS-897",
+  CSS13 = "BS-1175",
+  CSS16 = "BS-1198",
+  CSS19 = "BS-1308",
+  CSS21 = "BS-1314",
+  CSS23 = "BS-1319",
+  CSS25 = "BS-1318",
+  CSS27 = "BS-1322",
+  CSS4 = "BS-824",
+  CSS7 = "BS-889"
+)
+
+
+

@@ -1,9 +1,0 @@
-04a0 => Create an AnnData from the Seurat object
-
-2 alternative pipelines:
-
-04a1 => 04a2 : This run Step1 in two steps: preprocess in R cystopic and then inject into pyCisTopic
-
-04afullpy : This run the entire Step 1 in python (replace 04a1 and 04a2)
-
-04b => Step 2 in python
