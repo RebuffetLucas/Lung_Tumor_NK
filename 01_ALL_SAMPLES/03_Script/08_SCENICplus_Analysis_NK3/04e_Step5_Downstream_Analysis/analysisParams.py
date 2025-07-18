@@ -12,12 +12,12 @@ import os
 # name of the analysis step
 # Example : ANALYSIS_STEP_NAME = "02_GlobalHeterogeneity"
 
-ANALYSIS_04a0_STEP_NAME = "04_SCENICplus_Analysis/04a0_Step0_R_Extract_Metadata"
-ANALYSIS_04a1_STEP_NAME = "04_SCENICplus_Analysis/04a1_Step1_R_cisTopic_Prepro_ATACseq"
+ANALYSIS_04a0_STEP_NAME = "08_SCENICplus_Analysis_NK3/04a0_Step0_R_Extract_Metadata"
+ANALYSIS_04a1_STEP_NAME = "08_SCENICplus_Analysis_NK3/04a1_Step1_R_cisTopic_Prepro_ATACseq"
 
 
 
-ANALYSIS_STEP_NAME = "04_SCENICplus_Analysis/04e_Step5_Downstream_Analysis"
+ANALYSIS_STEP_NAME = "08_SCENICplus_Analysis_NK3/04e_Step5_Downstream_Analysis"
 
 # This is the literal title of the analysis step. It will be shown at the beginning
 # of the HTML report
@@ -39,7 +39,7 @@ PATH_TO_INITIAL_ANNDATA_OBJECT = os.path.join( PATH_EXPERIMENT_RAWDATA, "RDS_FIL
 
 PATH_TO_VELOCITY_FOLDER = os.path.join( PATH_EXPERIMENT_RAWDATA, "velocity", "velocity")
 
-PATH_TO_THE_04d_OUPUT_FOLDER = os.path.join( PATH_EXPERIMENT_OUTPUT, "04_SCENICplus_Analysis/04d_Step4_SnakeMake_Prepare")
+PATH_TO_THE_04d_OUPUT_FOLDER = os.path.join( PATH_EXPERIMENT_OUTPUT, "08_SCENICplus_Analysis_NK3/04d_Step4_SnakeMake_Prepare")
 
 
 
@@ -59,7 +59,7 @@ ANALYSIS_SAMPLES_NAME = "NK_TUMOR"
 STOP_THE_NOTEBOOK_HERE = True
 DO_RUN_SCRUBLET = False
 
-FT_OF_INTEREST= "KLF2"
+FT_OF_INTEREST= "IRF4"
 
 GROUP_OF_INTEREST = "NK_ENTPD1"
 
@@ -68,10 +68,10 @@ TABLE_EMBEDDING_OF_INTEREST = "WNN_UMAP_TABLE.csv"
 NUMBER_CPU = 20
 
 # Define cluster names and corresponding colors
-cluster_names = ['NK1_FGFBP2', 'NK1_CCL4','NK_DNAJB1', 'NK_NFKB1',   'NK2_XCL1','NK_GZMK','NK_CAMK4', 'NK_ENTPD1',  'NK_MKI67','ILC1', 'ILC3'] 
+cluster_names = ['NK1_FGFBP2', 'NK1_CCL4','NK_DNAJB1', 'NK2_NFKB1',   'NK2_XCL1','NK3_GZMK','NK3_CAMK4', 'NK_ENTPD1',  'NK_Prolif','ILC1', 'ILC3'] 
 color_codes = ["#E15759", "#FF9D9A", "#FFCC00", "#499894", "#86BCB6", "#59A14F", "#8CD17D", "#9966CC", "#CC99FF", "#6699FF", "#CCCCCC"]
 
-GROUP_VARIABLE_ORDER = ['ILC1', 'ILC3', 'NK_MKI67','NK_DNAJB1','NK1_FGFBP2', 'NK1_CCL4', 'NK_NFKB1', 'NK2_XCL1','NK_GZMK','NK_CAMK4', 'NK_ENTPD1'  ]
+GROUP_VARIABLE_ORDER = ['ILC1', 'ILC3', 'NK_Prolif','NK1_FGFBP2', 'NK1_CCL4', 'NK2_NFKB1', 'NK2_XCL1','NK3_GZMK','NK3_CAMK4', 'NK_ENTPD1'  ]
 
 #Filtering or not for the regulons +/+ and +/-
 DO_FILTER_REGULON = True
